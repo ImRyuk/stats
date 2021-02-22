@@ -33,6 +33,10 @@ services:
         tags:
             - { name: 'console.command', command: 'app:import-csv' }
 
+    App\Command\ExportCommand:
+        tags:
+            - { name: 'console.command', command: 'app:export-csv' }
+
     Symfony\Component\Finder\Finder:
         class: Symfony\Component\Finder\Finder
 

@@ -1,0 +1,94 @@
+{% extends "base.html.twig" %}
+
+
+
+{% block body %}
+    <div style="max-width: 1140px" class="container">
+        <div class="row" style="background-color: rgb(169, 182, 216) !important;max-height: 210px">
+            <div class="col-md-3 col-xs-3">
+                <img style="padding-top:70px;width: 100%" alt="Logo Charte marianne" src="https://www.gendarmerie.interieur.gouv.fr/storage/var/ezwebin_site/storage/images/4/3/7/8/78734-15-fre-FR/logo-sp-plus.png">
+            </div>
+            <div style="padding-top: 55px;padding-right: 0px;" class="col-md-6 col-xs-6">
+                <h2 style=" font-size: 35px;padding: 0px;text-align: center;color: black;background-color: rgb(121, 141, 194) !important;">La transparence sur les résultats de la gendarmerie nationale</h2>
+            </div>
+            <div style="background: white" class="col-md-3 col-xs-3">
+                {#<img style="max-height: 210px" src="http://static.footeo.com/uploads/asbellevue/Medias/RGION_1.PNG">#}
+                <img src="{{ ecussonPath }}" alt="ecusson du groupement"/>
+            </div>
+        </div>
+        <div class="row">
+            {% if viewStat.groupement is empty %}
+                <h2 style="font-size: 40px;text-align: center;" class="col-md-6">{{ viewStat.region }}</h2>
+            {% else %}
+                <h2 style="font-size: 40px;text-align: center;" class="col-md-6">{{ viewStat.groupement }}</h2>
+            {% endif %}
+            <form style="margin-top: 24px" class="col-md-6" action="{{path('view_stat')}}">
+                <label for="stat">Choisir un département:</label>
+                <select name="stat" id="stat" onchange='this.form.submit()'>
+                    <option>Sélectionner un groupement</option>
+                {% for stat in stats %}
+                    {% if loop.first %}
+                    <option value="{{ stat.id }}">{{ stat.region }}</option>
+                    {% elseif stat.region != stats[loop.index-2].region%}
+                        <optgroup label="{{ stat.region }}">
+                    <option value="{{ stat.id }}">{{ stat.groupement }}</option>
+                    {% else %}
+                        <option value="{{ stat.id }}">{{ stat.groupement }}</option>
+                    {% endif %}
+                    {% endfor %}
+                </select>
+            </form>
+        </div>
+        <div class="row">
+            <img style="max-height: 100px" src="{{ qr_code_data_uri(app.request.uri, { writer: 'svg', size: 150 }) }}" />
+        </div>
+        <div class="row">
+            <div class="col-md-8 col-xs-12">
+                <div class="row">
+                    <div style="padding: 5px" class="col-md-6 col-sm-6 col-xs-12">
+                        <div style="height: 0px;width: 100%;padding: 0px 0px 100%;background-color: rgb(230, 230, 230) !important;">
+                            <div style="    padding: 0px;height: 50%;margin: 0px;position: relative;">
+                                <p style="color: black">Pourcentage des victimes interrogées qui sont satisfaites ou très satisfaites du traitement de leur demande (1)</p>
+                            </div>
+                            <div style="    padding: 0px;height: 50%;margin: 0px;position: relative;">
+                                <span style="font-size: 70px;padding-top: 40px;display: block;text-align: center;padding-left: 0px;padding-right: 0px;position: absolute;top: 120px;color: rgb(169, 182, 216) !important;" class="col-md-12 col-sm-12 col-xs-12">{{ viewStat.satisfactionvictimes }}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="padding: 5px" class="col-md-6 col-sm-6 col-xs-12">
+                        <div style="height: 0px;width: 100%;padding: 0px 0px 100%;background-color: rgb(230, 230, 230) !important;">
+                            <div style="    padding: 0px;height: 50%;margin: 0px;position: relative;">
+                                <p style="color: black">Note attribuée par les usagers du chat de la brigade numérique pour le traitement de leur demande (2)</p>
+                            </div>
+                            <div style="    padding: 0px;height: 50%;margin: 0px;position: relative;">
+                                <span style="font-size: 70px;padding-top: 40px;display: block;text-align: center;padding-left: 0px;padding-right: 0px;position: absolute;top: 120px;color: rgb(169, 182, 216) !important;" class="col-md-12 col-sm-12 col-xs-12">{{ viewStat.satisfactionusagers }}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="padding: 5px" class="col-md-6 col-sm-6 col-xs-12">
+                        <div style="height: 0px;width: 100%;padding: 0px 0px 100%;background-color: rgb(230, 230, 230) !important;">
+                            <div style="    padding: 0px;height: 50%;margin: 0px;position: relative;">
+                                <p style="color: black">Note attribuée par les usagers du chat de la brigade numérique pour le traitement de leur demande (2)</p>
+                            </div>
+                            <div style="    padding: 0px;height: 50%;margin: 0px;position: relative;">
+                                <span style="font-size: 70px;padding-top: 40px;display: block;text-align: center;padding-left: 0px;padding-right: 0px;position: absolute;top: 120px;color: rgb(169, 182, 216) !important;" class="col-md-12 col-sm-12 col-xs-12">{{ viewStat.brigadenumerique }}/10</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="padding: 5px" class="col-md-6 col-sm-6 col-xs-12">
+                        <div style="height: 0px;width: 100%;padding: 0px 0px 100%;background-color: rgb(230, 230, 230) !important;">
+                            <div style="    padding: 0px;height: 50%;margin: 0px;position: relative;">
+                                <p style="color: black">Temps d'attente avant d'être pris en charge par un opérateur de la Brigade numérique (2)</p>
+                            </div>
+                            <div style="    padding: 0px;height: 50%;margin: 0px;position: relative;">
+                                <span style="font-size: 70px;padding-top: 40px;display: block;text-align: center;padding-left: 0px;padding-right: 0px;position: absolute;top: 120px;color: rgb(169, 182, 216) !important;" class="col-md-12 col-sm-12 col-xs-12">{{ viewStat.delaibrigade }} min</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+

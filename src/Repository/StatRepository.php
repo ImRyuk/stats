@@ -2,25 +2,25 @@
 
 namespace App\Repository;
 
-use App\Entity\StateUnite;
+use App\Entity\Stat;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @method StateUnite|null find($id, $lockMode = null, $lockVersion = null)
- * @method StateUnite|null findOneBy(array $criteria, array $orderBy = null)
- * @method StateUnite[]    findAll()
- * @method StateUnite[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Stat|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Stat|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Stat[]    findAll()
+ * @method Stat[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class StateUniteRepository extends ServiceEntityRepository
+class StatRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, StateUnite::class);
+        parent::__construct($registry, Stat::class);
     }
 
     // /**
-    //  * @return StateUnite[] Returns an array of StateUnite objects
+    //  * @return Stat[] Returns an array of Stat objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class StateUniteRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?StateUnite
+    public function findOneBySomeField($value): ?Stat
     {
         return $this->createQueryBuilder('s')
             ->andWhere('s.exampleField = :val')

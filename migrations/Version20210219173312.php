@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20210215123836 extends AbstractMigration
+final class Version20210219173312 extends AbstractMigration
 {
     public function getDescription() : string
     {
@@ -20,12 +20,12 @@ final class Version20210215123836 extends AbstractMigration
     public function up(Schema $schema) : void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('CREATE TABLE state_unite (id INT AUTO_INCREMENT NOT NULL, region VARCHAR(255) NOT NULL, groupement VARCHAR(255) NOT NULL, code VARCHAR(5) NOT NULL, satisfaction VARCHAR(4) NOT NULL, satisfaction_victime VARCHAR(4) NOT NULL, brigade_numerique VARCHAR(4) NOT NULL, delai_brigade_numerique VARCHAR(4) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
+        $this->addSql('CREATE TABLE old_region (id INT AUTO_INCREMENT NOT NULL, code VARCHAR(5) NOT NULL, ecusson VARCHAR(255) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
     }
 
     public function down(Schema $schema) : void
     {
         // this down() migration is auto-generated, please modify it to your needs
-        $this->addSql('DROP TABLE state_unite');
+        $this->addSql('DROP TABLE old_region');
     }
 }

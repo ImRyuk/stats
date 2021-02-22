@@ -2,10 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4727bde7-2c01-402a-9e31-85a0a6c7a8f9" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/templates/logo-sp-plus.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/stats.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Statistiques.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Statistiques.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/src/Command/ExportCommand.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20210215123836.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Command/ImportCommand.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Command/ImportCommand.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/StateUnite.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/StateUniteRepository.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,6 +89,20 @@
       <path value="$PROJECT_DIR$/vendor/doctrine/collections" />
       <path value="$PROJECT_DIR$/vendor/symfony/maker-bundle" />
       <path value="$PROJECT_DIR$/vendor/nikic/php-parser" />
+      <path value="$PROJECT_DIR$/vendor/twig/twig" />
+      <path value="$PROJECT_DIR$/vendor/symfony/twig-bridge" />
+      <path value="$PROJECT_DIR$/vendor/symfony/translation-contracts" />
+      <path value="$PROJECT_DIR$/vendor/symfony/twig-bundle" />
+      <path value="$PROJECT_DIR$/vendor/symfony/options-resolver" />
+      <path value="$PROJECT_DIR$/vendor/symfony/property-info" />
+      <path value="$PROJECT_DIR$/vendor/symfony/property-access" />
+      <path value="$PROJECT_DIR$/vendor/bacon/bacon-qr-code" />
+      <path value="$PROJECT_DIR$/vendor/endroid/qr-code" />
+      <path value="$PROJECT_DIR$/vendor/khanamiryan/qrcode-detector-decoder" />
+      <path value="$PROJECT_DIR$/vendor/dasprid/enum" />
+      <path value="$PROJECT_DIR$/vendor/myclabs/php-enum" />
+      <path value="$PROJECT_DIR$/vendor/endroid/installer" />
+      <path value="$PROJECT_DIR$/vendor/endroid/qr-code-bundle" />
     </include_path>
   </component>
   <component name="ProjectId" id="1oVyTaNh3X3We551jFxloovl82x" />
@@ -86,15 +111,20 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="//wsl$/Ubuntu-20.04/home/cjacquelet/Stats/Statistiques" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="terminal" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\laragon\www\Statistiques\public" />
+      <recent name="C:\laragon\www\Statistiques\assets" />
+      <recent name="C:\laragon\www\Statistiques\src\DisplayBundle\Resources\public\images" />
+      <recent name="C:\laragon\www\Statistiques\templates" />
       <recent name="C:\laragon\www\Statistiques\src\Data" />
     </key>
   </component>
@@ -109,7 +139,12 @@
       <workItem from="1613386061385" duration="14241000" />
       <workItem from="1613472443134" duration="1180000" />
       <workItem from="1613473781295" duration="8104000" />
-      <workItem from="1613495243700" duration="4728000" />
+      <workItem from="1613495243700" duration="4925000" />
+      <workItem from="1613565186467" duration="9772000" />
+      <workItem from="1613632252275" duration="26384000" />
+      <workItem from="1613753049459" duration="4709000" />
+      <workItem from="1613770101010" duration="3690000" />
+      <workItem from="1613980084154" duration="4533000" />
     </task>
     <servers />
   </component>
@@ -121,17 +156,25 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="507" y="214" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1613394235860" />
-    <state x="386" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1613396437139">
+    <state x="386" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1613638598025">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="386" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.824@0.0.1536.824" timestamp="1613396437139" />
+    <state x="386" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.824@0.0.1536.824" timestamp="1613638598025" />
+    <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1613645237943">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824@0.0.1536.824" timestamp="1613645237943" />
     <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1613477112636">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1613477112636" />
-    <state x="277" y="57" key="SettingsEditor" timestamp="1613477590303">
+    <state x="604" y="336" key="NewPhpFileDialog" timestamp="1613566281432">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="277" y="57" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1613477590303" />
+    <state x="604" y="336" key="NewPhpFileDialog/0.0.1536.824@0.0.1536.824" timestamp="1613566281432" />
+    <state x="277" y="57" key="SettingsEditor" timestamp="1613577512532">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="277" y="57" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1613577512532" />
   </component>
 </project>

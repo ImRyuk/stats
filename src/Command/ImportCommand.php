@@ -2,7 +2,8 @@
 
 namespace App\Command;
 
-use App\Entity\StateUnite;
+use App\Entity\OldRegion;
+use App\Entity\Stat;
 use Doctrine\ORM\EntityManagerInterface;
 use SplFileObject;
 use Symfony\Component\Finder\Finder;
@@ -15,13 +16,11 @@ class ImportCommand extends Command
 {
     // the name of the command (the part after "bin/console")
     protected static $defaultName = 'app:import-csv';
-    private $finder;
     private $em;
 
     public function __construct(Finder $finder, EntityManagerInterface $em)
     {
         $this->em = $em;
-        $this->finder = new Finder();
         // best practices recommend to call the parent constructor first and
         // then set your own properties. That wouldn't work in this case
         // because configure() needs the properties set in this constructor
@@ -50,11 +49,10 @@ class ImportCommand extends Command
 
         $keys = [];
         $region = '';
+        $stats = [];
 
-        $stats = $this->em->getRepository(StateUnite::class)->findAll();
-
-        //Clearing the table StateUnite
-        $cmd = $this->em->getClassMetadata(StateUnite::class);
+        //Clearing the table StatUnite
+        $cmd = $this->em->getClassMetadata(Stat::class);
         $connection = $this->em->getConnection();
         $dbPlatform = $connection->getDatabasePlatform();
         $connection->beginTransaction();
@@ -71,6 +69,7 @@ class ImportCommand extends Command
 
         //Navigating through the file
         foreach ($file as $key=>$row) {
+
             //The first row contents the fields name
             if($key==0)
             {
@@ -89,21 +88,33 @@ class ImportCommand extends Command
                     return $keys[$el];
                 }, array_keys($row)), array_values($row));
 
-                    //Creating a new StateUnite Object
-                    $stat = new StateUnite();
+                    //Creating a new StatUnite Object
+                $stat = new Stat();
+                var_dump($region);
+                var_dump($row);
+
                     $stat
                         ->setRegion($row['Région'])
                         ->setGroupement($row['Groupement'])
                         ->setCode($row['Code'])
-                        ->setSatisfaction($row['satisfaction usagers'])
-                        ->setSatisfactionVictime($row['satisfaction victimes'])
+                        ->setSatisfactionUsagers($row['satisfaction usagers'])
+                        ->setSatisfactionVictimes($row['satisfaction victimes'])
                         ->setBrigadeNumerique($row['brigade numérique'])
-                        ->setDelaiBrigadeNumerique($row['délai brigade numérique']);
-
-                    $this->em->persist($stat);
+                        ->setDelaiBrigade($row['délai brigade numérique']);
+                    $stats[] = $stat;
             }
         }
-        var_dump($stats);
+
+        foreach ($stats as $stat)
+        {
+            $region = $this->em->getRepository(OldRegion::class)->findOneBy(['Code' => $stat->getCode()]);
+            if(!is_null($region))
+            {
+                $stat->setOldRegion($region->getEcusson());
+            }
+            $this->em->persist($stat);
+        }
+
         $this->em->flush();
 
         // the value returned by someMethod() can be an iterator (https://secure.php.net/iterator)
