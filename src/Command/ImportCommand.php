@@ -2,8 +2,12 @@
 
 namespace App\Command;
 
+use App\Entity\Departement;
 use App\Entity\OldRegion;
+use App\Entity\Region;
 use App\Entity\Stat;
+use App\Entity\StatValue;
+use App\Entity\Type;
 use Doctrine\ORM\EntityManagerInterface;
 use SplFileObject;
 use Symfony\Component\Finder\Finder;
@@ -52,7 +56,25 @@ class ImportCommand extends Command
         $stats = [];
 
         //Clearing the table StatUnite
-        $cmd = $this->em->getClassMetadata(Stat::class);
+
+        $entities = [Departement::class, Region::class, StatValue::class, Type::class];
+
+
+        $connection = $this->em->getConnection();
+        $databasePlatform = $connection->getDatabasePlatform();
+        if ($databasePlatform->supportsForeignKeyConstraints()) {
+            $connection->query('SET FOREIGN_KEY_CHECKS=0');
+        }
+        foreach ($entities as $entity) {
+            $query = $databasePlatform->getTruncateTableSQL(
+                $this->em->getClassMetadata($entity)->getTableName());
+            $connection->executeUpdate($query);
+        }
+        if ($databasePlatform->supportsForeignKeyConstraints()) {
+            $connection->query('SET FOREIGN_KEY_CHECKS=1');
+        }
+
+        /*$cmd = $this->em->getClassMetadata(Stat::class);
         $connection = $this->em->getConnection();
         $dbPlatform = $connection->getDatabasePlatform();
         $connection->beginTransaction();
@@ -65,10 +87,75 @@ class ImportCommand extends Command
         }
         catch (\Exception $e) {
             $connection->rollback();
-        }
+        }*/
 
         //Navigating through the file
-        foreach ($file as $key=>$row) {
+
+        $regionName = '';
+        $types = [];
+        $regions = [];
+        $departements = [];
+        $stats[] = [];
+
+        foreach ($file as $key=>$row){
+            if($key==0)
+            {
+                $i = 3;
+                $keys = explode(";", $row[0]);
+                while ($i < count($keys))
+                {
+                    $type = new Type();
+                    $type->setLibelle($keys[$i]);
+                    $types[] = $type;
+                    $i++;
+
+                    $this->em->persist($type);
+                }
+            }
+            if($key>=1 && !is_null($row[0])){
+                $row = explode(";", $row[0]);
+
+                //If the row has no region, he heritates the last used region
+                if(!empty($row[0])){
+                    $RegionEntity = new Region();
+                    $RegionEntity->setName($row[0]);
+                    $currentRegion = $RegionEntity;
+                    $regions[] = $RegionEntity;
+
+                    $this->em->persist($RegionEntity);
+                }
+
+
+                $departement = new Departement();
+                $departement
+                    ->setName($row[1])
+                    ->setCode($row[2])
+                    ->setRegion($currentRegion);
+                $departements[] = $departement;
+
+                $this->em->persist($departement);
+
+                $i=3;
+                $j=0;
+
+                while($i < count($row))
+                {
+                    $statValue = new StatValue();
+                    $statValue->setValue($row[$i])
+                              ->setDepartement($departement)
+                              ->setType($types[$j]);
+                    $stats[] = $statValue;
+                    $i++;
+                    $j++;
+
+                    $this->em->persist($statValue);
+                }
+
+
+
+            }
+        }
+        /*foreach ($file as $key=>$row) {
 
             //The first row contents the fields name
             if($key==0)
@@ -105,7 +192,7 @@ class ImportCommand extends Command
             }
         }
 
-        foreach ($stats as $stat)
+        /*foreach ($stats as $stat)
         {
             $region = $this->em->getRepository(OldRegion::class)->findOneBy(['Code' => $stat->getCode()]);
             if(!is_null($region))
@@ -113,7 +200,7 @@ class ImportCommand extends Command
                 $stat->setOldRegion($region->getEcusson());
             }
             $this->em->persist($stat);
-        }
+        }*/
 
         $this->em->flush();
 

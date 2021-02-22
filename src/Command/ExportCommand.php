@@ -42,7 +42,7 @@ class ExportCommand extends Command
 
         $output->writeln('Path to csv file: '.$input->getArgument('path'));
 
-        $file = new SplFileObject('src\Data\file .csv', 'w');
+        $file = new SplFileObject($input->getArgument('path'), 'w');
 
         $stats = $this->em->getRepository(Stat::class)->findAll();
 

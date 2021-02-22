@@ -40,27 +40,6 @@ class StatController extends AbstractController
             $ecussonPath = '/ecussons/' . $viewStat->getOldRegion() . '.png';
         }
 
-        var_dump($viewStat->getGroupement());
-
-        //$ecussonFile = ($viewStat->getGroupement ? true : false); // returns true
-
-        //$ecussonFile = 'DisplayBundle/Resources/public/images/ecussons/' . $viewStat->getOldRegion() . '.png';
-        /*$finder = new Finder();
-        $finder->files()->in('C:\laragon\www\Statistiques\src\DisplayBundle\Resources\public\images\ecussons')->name($viewStat->getOldRegion() . 'png');
-        //var_dump($finder);
-        foreach ($finder as $file) {
-            // Dump the absolute path
-            var_dump($file->getRealPath());
-        }
-        var_dump($ecussonFile);
-        if(file_exists($ecussonFile))
-        {
-            var_dump('yes the file exists');
-        }
-        else{
-              var_dump('file doesnt exists');
-        }*/
-
         return $this->render('stats.html.twig', [
             'stats' => $stats,
             'viewStat' => $viewStat,

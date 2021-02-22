@@ -2,21 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4727bde7-2c01-402a-9e31-85a0a6c7a8f9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/templates/logo-sp-plus.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/stats.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Statistiques.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Statistiques.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/stats.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/src/Command/ExportCommand.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210215123836.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20210219172418.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20210219173312.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20210219174926.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Command/ExportCommand.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Command/ExportCommand.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Command/ImportCommand.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Command/ImportCommand.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/StateUnite.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/StateUniteRepository.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/StatController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/StatController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/stats.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/stats.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -144,7 +139,7 @@
       <workItem from="1613632252275" duration="26384000" />
       <workItem from="1613753049459" duration="4709000" />
       <workItem from="1613770101010" duration="3690000" />
-      <workItem from="1613980084154" duration="4533000" />
+      <workItem from="1613980084154" duration="14714000" />
     </task>
     <servers />
   </component>
