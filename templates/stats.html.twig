@@ -1,8 +1,10 @@
 {% extends "base.html.twig" %}
 
+
 {% block body %}
     <div style="max-width: 1140px" class="container">
         <div class="row griGkV">
+            <a href="{{ path('generate_PDF', {id: departement.id}) }}">PDF</a>
             <div class="col-md-3 col-xs-3 dGaTvG">
                 <img class="jSCFEZ" alt="Logo Charte marianne" src="https://www.gendarmerie.interieur.gouv.fr/storage/var/ezwebin_site/storage/images/4/3/7/8/78734-15-fre-FR/logo-sp-plus.png">
             </div>
@@ -14,23 +16,19 @@
             </div>
         </div>
         <div class="row">
-            {% if viewStat.groupement is empty %}
-                <h2 class="col-md-6 fymAmm">{{ viewStat.region }}</h2>
-            {% else %}
-                <h2 class="col-md-6 fymAmm">{{ viewStat.groupement }}</h2>
-            {% endif %}
+            <h2 class="col-md-6 fymAmm">{{ departement.name }}</h2>
             <form style="margin-top: 24px" class="col-md-6" action="{{path('view_stat')}}">
                 <label for="stat">Choisir un département:</label>
                 <select name="stat" id="stat" onchange='this.form.submit()'>
                     <option>Sélectionner un groupement</option>
-                {% for stat in stats %}
+                {% for departement in departements %}
                     {% if loop.first %}
-                    <option value="{{ stat.id }}">{{ stat.region }}</option>
-                    {% elseif stat.region != stats[loop.index-2].region%}
-                        <optgroup label="{{ stat.region }}">
-                    <option value="{{ stat.id }}">{{ stat.groupement }}</option>
+                    <option value="{{ departement.id }}">{{ departement.region.name }}</option>
+                    {% elseif departement.region.name != departements[loop.index-2].region.name %}
+                        <optgroup label="{{ departement.region.name }}">
+                    <option value="{{ departement.id }}">{{ departement.name }}</option>
                     {% else %}
-                        <option value="{{ stat.id }}">{{ stat.groupement }}</option>
+                        <option value="{{ departement.id }}">{{ departement.name }}</option>
                     {% endif %}
                     {% endfor %}
                 </select>
@@ -39,49 +37,20 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2 col-xs-12">
                 <div class="row">
+                {% for stat in departement.stats %}
                     <div class="col-md-6 col-sm-6 col-xs-12 fzCSRl">
                         <div class="hepEal">
                             <div class="row eyvzSh">
-                                <p class="kIlCOr">Pourcentage des victimes interrogées qui sont satisfaites ou très satisfaites du traitement de leur demande (1)</p>
+                                <p class="kIlCOr">{{ stat.type.libelle }}</p>
                             </div>
                             <div class="row eyvzSh">
-                                <span class="col-md-12 col-sm-12 col-xs-12 coGMWX">{{ viewStat.satisfactionvictimes }}</span>
+                                <span class="col-md-12 col-sm-12 col-xs-12 coGMWX">{{ stat.value }}</span>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6 col-sm-6 col-xs-12 fzCSRl">
-                        <div class="hepEal">
-                            <div class="row eyvzSh">
-                                <p class="kIlCOr">Note attribuée par les usagers du chat de la brigade numérique pour le traitement de leur demande (2)</p>
-                            </div>
-                            <div class="row eyvzSh">
-                                <span class="col-md-12 col-sm-12 col-xs-12 coGMWX">{{ viewStat.satisfactionusagers }}</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-sm-6 col-xs-12 fzCSRl">
-                        <div class="hepEal">
-                            <div class="row eyvzSh">
-                                <p class="kIlCOr" >Note attribuée par les usagers du chat de la brigade numérique pour le traitement de leur demande (2)</p>
-                            </div>
-                            <div class="row eyvzSh">
-                                <span class="col-md-12 col-sm-12 col-xs-12 coGMWX">{{ viewStat.brigadenumerique }}/10</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-sm-6 col-xs-12 fzCSRl">
-                        <div class="hepEal">
-                            <div class="row eyvzSh">
-                                <p class="kIlCOr">Temps d'attente avant d'être pris en charge par un opérateur de la Brigade numérique (2)</p>
-                            </div>
-                            <div class="row eyvzSh">
-                                <span class="col-md-12 col-sm-12 col-xs-12 coGMWX">{{ viewStat.delaibrigade }} min</span>
-                            </div>
-                        </div>
-                    </div>
+                {% endfor %}
                 </div>
             </div>
-        </div>
         <div class="row dcVOKZ">
             <div class="col-md-8 col-sm-8 col-xs-12 LyzKh">
                 <div>Résultats régionaux issus de la campagne annuelle d'évaluation de la qualité de l'accueil menée par l'Inspection générale de la gendarmerie nationale (IGGN). Chaque année et sur tout le territoire (métropole et outre-mer) des personnels rencontrent ou contactent des usagers afin de recueillir leur avis et leur satisfaction. En 2020, la campagne a concerné un panel de 3704 usagers et/ou victimes s'étant rendus ou ayant contacté une unité de gendarmerie.</div>

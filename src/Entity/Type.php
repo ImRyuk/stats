@@ -9,8 +9,9 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=TypeRepository::class)
+ * @ORM\Table(name="Types")
  */
-class Type
+class Type implements \JsonSerializable
 {
     /**
      * @ORM\Id
@@ -23,6 +24,11 @@ class Type
      * @ORM\Column(type="string", length=255)
      */
     private $libelle;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $suffixe;
 
     /**
      * @ORM\OneToMany(targetEntity=StatValue::class, mappedBy="type")
@@ -47,6 +53,18 @@ class Type
     public function setLibelle(string $libelle): self
     {
         $this->libelle = $libelle;
+
+        return $this;
+    }
+
+    public function getSuffixe(): ?string
+    {
+        return $this->suffixe;
+    }
+
+    public function setSuffixe(string $suffixe): self
+    {
+        $this->suffixe = $suffixe;
 
         return $this;
     }
@@ -79,5 +97,19 @@ class Type
         }
 
         return $this;
+    }
+
+    /**
+     * Specify data which should be serialized to JSON
+     * @link https://php.net/manual/en/jsonserializable.jsonserialize.php
+     * @return mixed data which can be serialized by <b>json_encode</b>,
+     * which is a value of any type other than a resource.
+     * @since 5.4.0
+     */
+    public function jsonSerialize()
+    {
+        return [
+            "libelle" => $this->getLibelle()
+        ];
     }
 }

@@ -5,11 +5,12 @@ namespace App\Command;
 use App\Entity\Departement;
 use App\Entity\OldRegion;
 use App\Entity\Region;
-use App\Entity\Stat;
 use App\Entity\StatValue;
 use App\Entity\Type;
 use Doctrine\ORM\EntityManagerInterface;
 use SplFileObject;
+use Symfony\Component\Console\Question\ConfirmationQuestion;
+use Symfony\Component\Console\Question\Question;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
@@ -22,7 +23,7 @@ class ImportCommand extends Command
     protected static $defaultName = 'app:import-csv';
     private $em;
 
-    public function __construct(Finder $finder, EntityManagerInterface $em)
+    public function __construct(EntityManagerInterface $em)
     {
         $this->em = $em;
         // best practices recommend to call the parent constructor first and
@@ -41,24 +42,22 @@ class ImportCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        // outputs multiple lines to the console (adding "\n" at the end of each line)
 
         $output->writeln('Path to csv file: '.$input->getArgument('path'));
 
-        //$this->finder->files()->in('src\Data');
-        //$this->finder->path($input->getArgument('path'))->name('*.csv');
-
         $file = new SplFileObject($input->getArgument('path'));
+
+        if($file->getExtension()!='csv')
+        {
+            return Command::FAILURE;
+            //throw new \Exception('The file must be a csv extension');
+        }
+
         $file->setFlags(SplFileObject::READ_CSV);
 
-        $keys = [];
-        $region = '';
-        $stats = [];
 
-        //Clearing the table StatUnite
-
-        $entities = [Departement::class, Region::class, StatValue::class, Type::class];
-
+        //Clearing the database tables
+        /*$entities = [Departement::class, Region::class, StatValue::class, Type::class];
 
         $connection = $this->em->getConnection();
         $databasePlatform = $connection->getDatabasePlatform();
@@ -72,78 +71,93 @@ class ImportCommand extends Command
         }
         if ($databasePlatform->supportsForeignKeyConstraints()) {
             $connection->query('SET FOREIGN_KEY_CHECKS=1');
-        }
-
-        /*$cmd = $this->em->getClassMetadata(Stat::class);
-        $connection = $this->em->getConnection();
-        $dbPlatform = $connection->getDatabasePlatform();
-        $connection->beginTransaction();
-        try {
-            $connection->query('SET FOREIGN_KEY_CHECKS=0');
-            $q = $dbPlatform->getTruncateTableSql($cmd->getTableName());
-            $connection->executeUpdate($q);
-            $connection->query('SET FOREIGN_KEY_CHECKS=1');
-            $connection->commit();
-        }
-        catch (\Exception $e) {
-            $connection->rollback();
         }*/
 
-        //Navigating through the file
-
-        $regionName = '';
         $types = [];
-        $regions = [];
         $departements = [];
         $stats[] = [];
 
+        //Navigating through the file
         foreach ($file as $key=>$row){
+
+            //the first row stores the headers
             if($key==0)
             {
                 $i = 3;
                 $keys = explode(";", $row[0]);
+
+                $defaultHeadersValues = ['Région', 'Groupement', 'Code'];
+                $percentNeeded = [80, 85,75];
+
+                //We check if the 3 first rows match with the default headers values, if not, we throw an error message
+                for($j = 0; $j<$i;$j++)
+                {
+                    var_dump($percentNeeded[$j]);
+                    similar_text($defaultHeadersValues[$j], $keys[$j], $percent);
+                    var_dump($percent);
+                    if($percent < $percentNeeded[$j])
+                    {
+                        $output->writeln('ERROR: The column ' . $keys[$j] . ' doesnt match with the default value ' . $defaultHeadersValues[$j]);
+                        $output->writeln('Command Failure');
+                        return Command::FAILURE;
+                    }
+                }
+
                 while ($i < count($keys))
                 {
+                    //Asking if the column needs a suffixe parameter, if yes, asking its name and adding it to the new Type Object
+                    $helper = $this->getHelper('question');
+                    $question = new ConfirmationQuestion('Does the column ' . $keys[$i] . ' needs a suffixe parameter?(yes/no)', true);
                     $type = new Type();
                     $type->setLibelle($keys[$i]);
+                    if ($helper->ask($input, $output, $question)) {
+                        $question = new Question('Please enter the name of the suffixe needed');
+                        $suffixe = $helper->ask($input, $output, $question);
+                        $type->setSuffixe($suffixe);
+                    }
                     $types[] = $type;
                     $i++;
 
                     $this->em->persist($type);
                 }
             }
-            if($key>=1 && !is_null($row[0])){
+            else if($key>=1 && !is_null($row[0])){
                 $row = explode(";", $row[0]);
 
-                //If the row has no region, he heritates the last used region
+                //If the row has a region, we create a new one
                 if(!empty($row[0])){
                     $RegionEntity = new Region();
                     $RegionEntity->setName($row[0]);
                     $currentRegion = $RegionEntity;
-                    $regions[] = $RegionEntity;
 
                     $this->em->persist($RegionEntity);
                 }
 
-
                 $departement = new Departement();
+
+                //If the row 'Région' is empty, it means its the same as the past departement, so we give it the same region
+                if(empty($row[1]))
+                {
+                    $departement->setName($currentRegion->getName());
+                } else {
+                    $departement->setName($row[1]);
+                }
                 $departement
-                    ->setName($row[1])
                     ->setCode($row[2])
                     ->setRegion($currentRegion);
                 $departements[] = $departement;
 
-                $this->em->persist($departement);
-
                 $i=3;
                 $j=0;
 
+                //Navigating through the departements stats
                 while($i < count($row))
                 {
                     $statValue = new StatValue();
-                    $statValue->setValue($row[$i])
-                              ->setDepartement($departement)
-                              ->setType($types[$j]);
+                    $statValue
+                        ->setValue($row[$i])
+                        ->setDepartement($departement)
+                        ->setType($types[$j]);
                     $stats[] = $statValue;
                     $i++;
                     $j++;
@@ -151,65 +165,21 @@ class ImportCommand extends Command
                     $this->em->persist($statValue);
                 }
 
-
-
-            }
-        }
-        /*foreach ($file as $key=>$row) {
-
-            //The first row contents the fields name
-            if($key==0)
-            {
-                $keys = explode(";", $row[0]);
-            }
-            else if($key>=1 && !is_null($row[0]))
-            {
-                    //Separating the row in order to filter it
-                    $row = explode(";", $row[0]);
-
-                    //If the row has no region, he heritates the last used region
-                    $row[0] = (empty($row[0]) ? $region : $region=$row[0]);
-
-                    //Filling the row array as values with the keys array as keys
-                    $row = array_combine(array_map(function($el) use ($keys) {
-                    return $keys[$el];
-                }, array_keys($row)), array_values($row));
-
-                    //Creating a new StatUnite Object
-                $stat = new Stat();
-                var_dump($region);
-                var_dump($row);
-
-                    $stat
-                        ->setRegion($row['Région'])
-                        ->setGroupement($row['Groupement'])
-                        ->setCode($row['Code'])
-                        ->setSatisfactionUsagers($row['satisfaction usagers'])
-                        ->setSatisfactionVictimes($row['satisfaction victimes'])
-                        ->setBrigadeNumerique($row['brigade numérique'])
-                        ->setDelaiBrigade($row['délai brigade numérique']);
-                    $stats[] = $stat;
             }
         }
 
-        /*foreach ($stats as $stat)
+        //Affecting the old region to each departement in order to render their ecusson later
+        foreach ($departements as $departement)
         {
-            $region = $this->em->getRepository(OldRegion::class)->findOneBy(['Code' => $stat->getCode()]);
-            if(!is_null($region))
+            $oldRegion = $this->em->getRepository(OldRegion::class)->findOneBy(['Code' => $departement->getCode()]);
+            if(!is_null($oldRegion))
             {
-                $stat->setOldRegion($region->getEcusson());
+                $departement->setOldRegion($oldRegion->getEcusson());
             }
-            $this->em->persist($stat);
-        }*/
+            $this->em->persist($departement);
+        }
 
-        $this->em->flush();
-
-        // the value returned by someMethod() can be an iterator (https://secure.php.net/iterator)
-        // that generates and returns the messages with the 'yield' PHP keyword
-
-
-        // this method must return an integer number with the "exit status code"
-        // of the command. You can also use these constants to make code more readable
+       //$this->em->flush();
 
         // return this if there was no problem running the command
         // (it's equivalent to returning int(0))

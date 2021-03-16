@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    {% block stylesheets %}
+        <link href="C:\laragon\www\Statistiques\public\stats.css" rel="stylesheet" crossorigin="anonymous"></link>
+        <link href="C:\laragon\www\Statistiques\public\css\bootstrap.min.css" rel="stylesheet" crossorigin="anonymous"></link>
+    {% endblock %}
+
+</head>
+<body>
+{% block body %}
+    <div style="max-width: 1140px" class="container">
+        <div class="row griGkV">
+            <div class="col-md-3 col-xs-3 dGaTvG">
+                <img class="jSCFEZ" alt="Logo Charte marianne" src="https://www.gendarmerie.interieur.gouv.fr/storage/var/ezwebin_site/storage/images/4/3/7/8/78734-15-fre-FR/logo-sp-plus.png">
+            </div>
+            <div class="col-md-6 col-xs-6 ejWxtZ">
+                <h2 class="emoaEe">La transparence sur les résultats de la gendarmerie nationale</h2>
+            </div>
+            <div style="background-color: white; text-align: center" class="col-md-3 col-xs-3">
+                <img class="hiacgz" src="{{ ecussonPath }}" alt="ecusson du groupement"/>
+            </div>
+        </div>
+        <div class="row">
+            <h2 class="col-md-6 fymAmm">{{ departement.name }}</h2>
+        </div>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 col-xs-12">
+                <div class="row">
+                    {% for stat in departement.stats %}
+                        <div class="col-md-6 col-sm-6 col-xs-12 fzCSRl">
+                            <div class="hepEal">
+                                <div class="row eyvzSh">
+                                    <p class="kIlCOr">{{ stat.type.libelle }}</p>
+                                </div>
+                                <div class="row eyvzSh">
+                                    <span class="col-md-12 col-sm-12 col-xs-12 coGMWX">{{ stat.value }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="row dcVOKZ">
+                <div class="col-md-8 col-sm-8 col-xs-12 LyzKh">
+                    <div>Résultats régionaux issus de la campagne annuelle d'évaluation de la qualité de l'accueil menée par l'Inspection générale de la gendarmerie nationale (IGGN). Chaque année et sur tout le territoire (métropole et outre-mer) des personnels rencontrent ou contactent des usagers afin de recueillir leur avis et leur satisfaction. En 2020, la campagne a concerné un panel de 3704 usagers et/ou victimes s'étant rendus ou ayant contacté une unité de gendarmerie.</div>
+                    <div>Résultats nationaux issus des statistiques d'activité de la brigade numérique sur la période du 1er janvier 2020 au 31 décembre 2020. Directement accessible sur le site internet ou via les réseaux sociaux de la gendarmerie, les personnels de la brigade numérique répondent à vos demandes 24h/24h, 7j/7j. N'hésitez pas à les contacter!</div>
+                    <div class="jZgZdV">Pour en savoir plus rendez vous sur :<!-- --> <a href="https://resultats-service-public.fr">resultats-service-public.fr</a></div>
+                </div>
+                <div style="padding: 5px;text-align: right;" class="col-md-4 col-sm-4 hidden-xs">
+                    <img style="height: 250px; width: 250px" src="{{ qr_code_data_uri(app.request.uri, { writer: 'svg', size: 150, foreground_color: { r: 169, g: 182, b: 216 }, background_color: { r: 255, g: 255, b: 255 }}) }}" alt="QR code de la page" />
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+</body>
+</html>
+
+
+
