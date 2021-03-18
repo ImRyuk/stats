@@ -1,6 +1,6 @@
 index:
     path: /
-    controller: App\Controller\DefaultController::index
+    controller: App\Controller\StatController::index
 
 getDepartement:
   path:     /departements/view/{code}

@@ -135,6 +135,20 @@ class Departement implements JsonSerializable
         return $this;
     }
 
+    public function toCSV(): array
+    {
+        $values = [$this->getName(), $this->getCode()];
+
+        $stats = $this->getStats();
+
+        foreach ($stats as $stat)
+        {
+            $values[] = $stat->getValue();
+        }
+
+        return $values;
+    }
+
     /**
      * Specify data which should be serialized to JSON
      * @link https://php.net/manual/en/jsonserializable.jsonserialize.php

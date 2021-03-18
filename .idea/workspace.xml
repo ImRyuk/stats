@@ -2,55 +2,59 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4727bde7-2c01-402a-9e31-85a0a6c7a8f9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/css/bootstrap-grid.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/css/bootstrap-grid.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/css/bootstrap-grid.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/css/bootstrap-grid.min.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/css/bootstrap-grid.rtl.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/css/bootstrap-grid.rtl.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/css/bootstrap-grid.rtl.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/css/bootstrap-grid.rtl.min.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/css/bootstrap-reboot.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/css/bootstrap-reboot.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/css/bootstrap-reboot.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/css/bootstrap-reboot.min.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/css/bootstrap-reboot.rtl.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/css/bootstrap-reboot.rtl.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/css/bootstrap-reboot.rtl.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/css/bootstrap-reboot.rtl.min.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/css/bootstrap-utilities.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/css/bootstrap-utilities.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/css/bootstrap-utilities.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/css/bootstrap-utilities.min.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/css/bootstrap-utilities.rtl.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/css/bootstrap-utilities.rtl.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/css/bootstrap-utilities.rtl.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/css/bootstrap-utilities.rtl.min.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/css/bootstrap.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/css/bootstrap.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/css/bootstrap.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/css/bootstrap.min.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/css/bootstrap.rtl.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/css/bootstrap.rtl.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/css/bootstrap.rtl.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/css/bootstrap.rtl.min.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/pdf.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/csv/export_csv.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/csv/form.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/csv/modif_csv.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/csv/view_csv.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/Statistiques.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Statistiques.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/routes.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/ecussons/Guadeloupe.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/ecussons/Guadeloupe.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/ecussons/Guyane Française.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/ecussons/Guyane Française.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/ecussons/La Réunion.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/ecussons/La Réunion.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/ecussons/Martinique.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/ecussons/Martinique.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/ecussons/National.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/ecussons/National.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/ecussons/Nouvelle Calédonie.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/ecussons/Nouvelle Calédonie.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/ecussons/Polynésie Française.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/ecussons/Polynésie Française.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/ecussons/Saint Pierre et Miquelon.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/ecussons/Saint Pierre et Miquelon.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/ecussons/Wallis et Futuna.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/ecussons/Wallis et Futuna.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/ecussons/alsace.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/ecussons/alsace.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/ecussons/aquitaine.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/ecussons/aquitaine.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/ecussons/auvergne.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/ecussons/auvergne.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/ecussons/basse-normandie.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/ecussons/basse-normandie.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/ecussons/bourgogne.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/ecussons/bourgogne.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/ecussons/bretagne.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/ecussons/bretagne.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/ecussons/centre-val-de-loire.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/ecussons/centre-val-de-loire.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/ecussons/champagne-ardenne.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/ecussons/champagne-ardenne.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/ecussons/corse.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/ecussons/corse.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/ecussons/franche-comte.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/ecussons/franche-comte.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/ecussons/haute-normandie.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/ecussons/haute-normandie.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/ecussons/ile-de-france.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/ecussons/ile-de-france.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/ecussons/languedoc-roussillon.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/ecussons/languedoc-roussillon.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/ecussons/limousin.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/ecussons/limousin.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/ecussons/lorraine.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/ecussons/lorraine.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/ecussons/mayotte.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/ecussons/mayotte.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/ecussons/midi-pyrenees.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/ecussons/midi-pyrenees.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/ecussons/nord-pas-de-calais.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/ecussons/nord-pas-de-calais.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/ecussons/pays-de-la-loire.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/ecussons/pays-de-la-loire.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/ecussons/picardie.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/ecussons/picardie.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/ecussons/poitou-charentes.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/ecussons/poitou-charentes.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/ecussons/provence-alpes-cote-d-azur.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/ecussons/provence-alpes-cote-d-azur.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/ecussons/rhone-alpes.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/ecussons/rhone-alpes.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Command/ImportCommand.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Command/ImportCommand.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/PDFController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PDFController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/StatController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/StatController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Data/newStats" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Departement.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Departement.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Region.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Region.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Stat.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/StatValue.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/StatValue.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Type.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Type.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/StatRepository.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pdf/generator.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/logo-sp-plus.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/logo-sp-plus.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/stats.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/stats.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -143,10 +147,11 @@
       <path value="$PROJECT_DIR$/vendor/dompdf/dompdf" />
       <path value="$PROJECT_DIR$/vendor/phenx/php-svg-lib" />
       <path value="$PROJECT_DIR$/vendor/phenx/php-font-lib" />
-      <path value="$PROJECT_DIR$/vendor/knplabs/knp-snappy" />
-      <path value="$PROJECT_DIR$/vendor/symfony/process" />
+      <path value="$PROJECT_DIR$/vendor/symfony/validator" />
+      <path value="$PROJECT_DIR$/vendor/symfony/form" />
+      <path value="$PROJECT_DIR$/vendor/symfony/intl" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-icu" />
       <path value="$PROJECT_DIR$/vendor/wemersonjanuario/wkhtmltopdf-windows" />
-      <path value="$PROJECT_DIR$/vendor/knplabs/knp-snappy-bundle" />
     </include_path>
   </component>
   <component name="ProjectId" id="1oVyTaNh3X3We551jFxloovl82x" />
@@ -158,21 +163,22 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/csv" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\laragon\www\Statistiques\public" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\laragon\www\Statistiques\templates\pdf" />
+      <recent name="C:\laragon\www\Statistiques\public\images" />
       <recent name="C:\laragon\www\Statistiques\templates" />
       <recent name="C:\laragon\www\Statistiques\public" />
       <recent name="C:\laragon\www\Statistiques\assets" />
-      <recent name="C:\laragon\www\Statistiques\src\DisplayBundle\Resources\public\images" />
-      <recent name="C:\laragon\www\Statistiques\src\Data" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\laragon\www\Statistiques\templates\csv" />
+      <recent name="C:\laragon\www\Statistiques\public" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -193,7 +199,8 @@
       <workItem from="1613770101010" duration="3690000" />
       <workItem from="1613980084154" duration="23372000" />
       <workItem from="1614151896198" duration="16755000" />
-      <workItem from="1615878833954" duration="17279000" />
+      <workItem from="1615878833954" duration="22216000" />
+      <workItem from="1616052602295" duration="20831000" />
     </task>
     <servers />
   </component>
@@ -201,18 +208,18 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="507" y="214" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1613394235860">
+    <state x="507" y="214" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1616075159469">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="507" y="214" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1613394235860" />
+    <state x="507" y="214" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1616075159469" />
     <state x="386" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1613638598025">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="386" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.824@0.0.1536.824" timestamp="1613638598025" />
-    <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1615881538148">
+    <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1616074256892">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824@0.0.1536.824" timestamp="1615881538148" />
+    <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824@0.0.1536.824" timestamp="1616074256892" />
     <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1613477112636">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -229,5 +236,9 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="277" y="57" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1613577512532" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1616058096321">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1616058096321" />
   </component>
 </project>

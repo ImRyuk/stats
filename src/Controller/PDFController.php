@@ -2,26 +2,42 @@
 
 namespace App\Controller;
 
+use App\Entity\Departement;
 use Dompdf\Dompdf;
 use Dompdf\Options;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class PDFController extends AbstractController
 {
-    public function index()
+    /**
+     * @Route("/Generate_PDF/{id}", name="generate_PDF")
+     * @param $id
+     */
+    public function DomPDF($id)
     {
+        $departement = $this->getDoctrine()->getRepository(Departement::class)->find($id);
+
+        if($departement->getOldRegion() == 'comgend' || is_null($departement->getOldRegion()))
+        {
+            $ecussonPath = 'C:\laragon\www\Statistiques\public\images\ecussons\\' . $departement->getName() . '.png';
+        } else{
+            $ecussonPath = 'C:\laragon\www\Statistiques\public\images\ecussons\\' . $departement->getOldRegion() . '.png';
+        }
+
         // Configure Dompdf according to your needs
         $pdfOptions = new Options();
         $pdfOptions->set('defaultFont', 'Arial');
 
         // Instantiate Dompdf with our options
         $dompdf = new Dompdf($pdfOptions);
+        $dompdf->getOptions()->setChroot("C:\\laragon\\www\\Statistiques\\public\\");
+
 
         // Retrieve the HTML generated in our twig file
-        $html = $this->renderView('pdf/index.html.twig', [
-            'title' => "Welcome to our PDF Test"
+        $html = $this->renderView('pdf/generator.html.twig', [
+            'ecussonPath' => $ecussonPath,
+            'departement' => $departement
         ]);
 
         // Load HTML to Dompdf
@@ -33,9 +49,9 @@ class PDFController extends AbstractController
         // Render the HTML as PDF
         $dompdf->render();
 
-        // Output the generated PDF to Browser (force download)
+        // Output the generated PDF to Browser (inline view)
         $dompdf->stream("mypdf.pdf", [
-            "Attachment" => true
+            "Attachment" => false
         ]);
     }
 }
