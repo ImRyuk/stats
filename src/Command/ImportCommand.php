@@ -7,11 +7,11 @@ use App\Entity\OldRegion;
 use App\Entity\Region;
 use App\Entity\StatValue;
 use App\Entity\Type;
+use Doctrine\DBAL\Exception;
 use Doctrine\ORM\EntityManagerInterface;
 use SplFileObject;
 use Symfony\Component\Console\Question\ConfirmationQuestion;
 use Symfony\Component\Console\Question\Question;
-use Symfony\Component\Finder\Finder;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -55,22 +55,36 @@ class ImportCommand extends Command
         $file->setFlags(SplFileObject::READ_CSV);
 
 
-        //Clearing the database tables
-        /*$entities = [Departement::class, Region::class, StatValue::class, Type::class];
+        //Clearing the database tables if the file is validated in order to replace the former database with new values
+        $entities = [Departement::class, Region::class, StatValue::class, Type::class];
 
         $connection = $this->em->getConnection();
-        $databasePlatform = $connection->getDatabasePlatform();
+        try {
+            $databasePlatform = $connection->getDatabasePlatform();
+        } catch (Exception $e) {
+        }
         if ($databasePlatform->supportsForeignKeyConstraints()) {
-            $connection->query('SET FOREIGN_KEY_CHECKS=0');
+            try {
+                $connection->executeQuery('SET FOREIGN_KEY_CHECKS=0');
+            } catch (Exception $e) {
+            }
         }
         foreach ($entities as $entity) {
             $query = $databasePlatform->getTruncateTableSQL(
                 $this->em->getClassMetadata($entity)->getTableName());
-            $connection->executeUpdate($query);
+            try {
+                $connection->executeStatement($query);
+            } catch (Exception $e) {
+            }
         }
         if ($databasePlatform->supportsForeignKeyConstraints()) {
-            $connection->query('SET FOREIGN_KEY_CHECKS=1');
-        }*/
+            try {
+                $connection->executeQuery('SET FOREIGN_KEY_CHECKS=1');
+            } catch (Exception $e) {
+            }
+        }
+
+
 
         $types = [];
         $departements = [];

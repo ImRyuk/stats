@@ -16,7 +16,6 @@ class CSVFile
      *
      * @Assert\NotBlank(message="Veuillez joindre un fichier Excel CSV !!!.")
      * @Assert\File(
-     *        mimeTypes={"application/csvm+json"},
      *        mimeTypesMessage = "Veuillez joindre un fichier Excel CSV !!!.",
      *        maxSize = "4M",
      *        maxSizeMessage = "Le fichier à joindre est trop volumineux !!!."
