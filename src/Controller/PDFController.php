@@ -10,19 +10,21 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class PDFController extends AbstractController
 {
+
     /**
      * @Route("/Generate_PDF/{id}", name="generate_PDF")
      * @param $id
      */
     public function DomPDF($id)
     {
+        $projectDir = $this->getParameter('kernel.project_dir');
         $departement = $this->getDoctrine()->getRepository(Departement::class)->find($id);
 
         if($departement->getOldRegion() == 'comgend' || is_null($departement->getOldRegion()))
         {
-            $ecussonPath = 'C:\laragon\www\Statistiques\public\images\ecussons\\' . $departement->getName() . '.png';
+            $ecussonPath = $projectDir . '\public\images\ecussons\\' . $departement->getName() . '.png';
         } else{
-            $ecussonPath = 'C:\laragon\www\Statistiques\public\images\ecussons\\' . $departement->getOldRegion() . '.png';
+            $ecussonPath = $projectDir . '\public\images\ecussons\\' . $departement->getOldRegion() . '.png';
         }
 
         // Configure Dompdf according to your needs
@@ -31,9 +33,9 @@ class PDFController extends AbstractController
 
         // Instantiate Dompdf with our options
         $dompdf = new Dompdf($pdfOptions);
-        $dompdf->getOptions()->setChroot("C:\\laragon\\www\\Statistiques\\public\\");
+        $dompdf->getOptions()->setChroot($projectDir . "\\public\\");
 
-        $logoMarianne = 'C:\laragon\www\Statistiques\public\images\logo-sp-plus.png';
+        $logoMarianne = $projectDir . '\public\images\logo-sp-plus.png';
 
 
         // Retrieve the HTML generated in our twig file
