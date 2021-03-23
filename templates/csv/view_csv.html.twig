@@ -7,6 +7,7 @@
         <tr>
             <th scope="col">Libellé</th>
             <th scope="col">Suffixe</th>
+            <th scope="col">Modifier</th>
         </tr>
         </thead>
         <tbody>
@@ -14,13 +15,31 @@
         <tr>
             <th scope="row">{{ type.libelle }}</th>
             {% if not type.suffixe %}
-                <td><input Type="text" placeholder="Null"></td>
+                <td><input Type="text" id="{{ type.libelle }}" disabled placeholder="Non assigné"></td>
             {% else %}
-                <td><input Type="text" placeholder="{{ type.suffixe }}"></td>
+                <td><input Type="text" id="{{ type.libelle }}" disabled placeholder="{{ type.suffixe }}"></td>
             {% endif %}
+            <td><input Type="checkbox" onclick="disableThis('{{ type.libelle }}', this)"></td>
         </tr>
         {% endfor %}
         </tbody>
     </table>
+
+{% endblock %}
+
+{% block javascripts %}
+
+    <script>
+        function disableThis(name, item) {
+            const value = document.getElementById(name);
+            // If the checkbox is checked, display the output text
+            if (item.checked === true){
+                value.disabled = false;
+            } else {
+                value.disabled = true;
+            }
+        }
+
+    </script>
 
 {% endblock %}

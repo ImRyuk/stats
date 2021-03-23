@@ -33,11 +33,14 @@ class PDFController extends AbstractController
         $dompdf = new Dompdf($pdfOptions);
         $dompdf->getOptions()->setChroot("C:\\laragon\\www\\Statistiques\\public\\");
 
+        $logoMarianne = 'C:\laragon\www\Statistiques\public\images\logo-sp-plus.png';
+
 
         // Retrieve the HTML generated in our twig file
         $html = $this->renderView('pdf/generator.html.twig', [
             'ecussonPath' => $ecussonPath,
-            'departement' => $departement
+            'departement' => $departement,
+            'logoMarianne' => $logoMarianne
         ]);
 
         // Load HTML to Dompdf

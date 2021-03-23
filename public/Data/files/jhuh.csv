@@ -1,0 +1,103 @@
+Région;Groupement;Code;"satisfaction usagers";"satisfaction victimes";"brigade numérique";"délai brigade numérique"
+National;National;;92%;93%;9;2
+AUVERGNE-RHÔNE-ALPES;Puy-de-Dôme;2966;88%;91%;9;2
+;Allier;3044;88%;91%;9;2
+;Cantal;3089;88%;91%;9;2
+;Haute-Loire;3132;88%;91%;9;2
+;Rhône;2482;88%;91%;9;2
+;Ain;2535;88%;91%;9;2
+;Ardèche;2599;88%;91%;9;2
+;Drôme;2649;88%;91%;9;2
+;Isère;2709;88%;91%;9;2
+;Loire;2803;88%;91%;9;2
+;Savoie;2860;88%;91%;9;2
+;Haute-Savoie;2908;88%;91%;9;2
+BOURGOGNE-FRANCHE-COMTE;Côte-d-Or;3776;89%;92%;9;2
+;Nièvre;3830;89%;92%;9;2
+;Saône-et-Loire;3872;89%;92%;9;2
+;Yonne;3948;89%;92%;9;2
+;Doubs;4009;89%;92%;9;2
+;Jura;4063;89%;92%;9;2
+;Haute-Saône;4110;89%;92%;9;2
+;"Territoire de Belfort";4154;89%;92%;9;2
+BRETAGNE;Ille-et-Vilaine;669;90%;96%;9;2
+;"Côtes d’Armor";729;90%;96%;9;2
+;Finistère;791;90%;96%;9;2
+;Morbihan;848;90%;96%;9;2
+"CENTRE VAL DE LOIRE";Loiret;5304;93%;95%;9;2
+;Cher;5359;93%;95%;9;2
+;Eure-et-Loir;5402;93%;95%;9;2
+;Indre;5446;93%;95%;9;2
+;Indre-et-Loire;5485;93%;95%;9;2
+;Loir-et-Cher;5529;93%;95%;9;2
+CORSE;Corse-du-Sud;4876;93%;95%;9;2
+;Haute-Corse;4912;93%;95%;9;2
+GRAND-EST;Bas-Rhin;3442;90%;92%;9;2
+;Haut-Rhin;3508;90%;92%;9;2
+;Moselle;3187;90%;92%;9;2
+;Meurthe-et-Moselle;3282;90%;92%;9;2
+;Meuse;3345;90%;92%;9;2
+;Vosges;3387;90%;92%;9;2
+;Marne;3566;90%;92%;9;2
+;Ardennes;3619;90%;92%;9;2
+;Aube;3672;90%;92%;9;2
+;Haute-Marne;3718;90%;92%;9;2
+HAUTS-DE-FRANCE;Nord;108;95%;96%;9;2
+;Pas-de-Calais;229;95%;96%;9;2
+;Somme;326;95%;96%;9;2
+;Oise;456;95%;96%;9;2
+;Aisne;396;95%;96%;9;2
+"ILE DE FRANCE";Yvelines;5098;91%;95%;9;2
+;Essonne;5147;91%;95%;9;2
+;Val-d’Oise;5193;91%;95%;9;2
+;"Seine et Marne";5238;91%;95%;9;2
+NORMANDIE;Calvados;910;93%;91%;9;2
+;Manche;978;93%;91%;9;2
+;Orne;1048;93%;91%;9;2
+;Seine-Maritime;522;93%;91%;9;2
+;Eure;604;93%;91%;9;2
+NOUVELLE-AQUITAINE;Gironde;1382;94%;93%;9;2
+;Dordogne;1477;94%;93%;9;2
+;Landes;1543;94%;93%;9;2
+;Lot-et-Garonne;1599;94%;93%;9;2
+;Pyrénées-Atlantiques;1653;94%;93%;9;2
+;Haute-Vienne;1932;94%;93%;9;2
+;Corrèze;1973;94%;93%;9;2
+;Creuse;2016;94%;93%;9;2
+;Vienne;1727;94%;93%;9;2
+;Charente;1771;94%;93%;9;2
+;Charente-Maritime;1817;94%;93%;9;2
+;Deux-Sèvres;1881;94%;93%;9;2
+OCCITANIE;Hérault;4614;89%;92%;9;2
+;Aude;4668;89%;92%;9;2
+;Gard;4716;89%;92%;9;2
+;Lozère;4781;89%;92%;9;2
+;Pyrénées-Orientales;4817;89%;92%;9;2
+;Haute-Garonne;2058;89%;92%;9;2
+;Ariège;2125;89%;92%;9;2
+;Aveyron;2166;89%;92%;9;2
+;Gers;2236;89%;92%;9;2
+;Lot;2280;89%;92%;9;2
+;Hautes-Pyrénées;2324;89%;92%;9;2
+;Tarn;2368;89%;92%;9;2
+;Tarn-et-Garonne;2425;89%;92%;9;2
+"PAYS DE LA LOIRE";Loire-Atlantique;1108;89%;93%;9;2
+;"Maine-et-Loire ";1176;89%;93%;9;2
+;Mayenne;1234;89%;93%;9;2
+;Sarthe;1274;89%;93%;9;2
+;Vendée;1328;89%;93%;9;2
+"PROVENCE ALPES COTE D’AZUR";Bouches-du-Rhône;4290;94%;93%;9;2
+;Alpes-de-Haute-Provence;4354;94%;93%;9;2
+;Hautes-Alpes;4401;94%;93%;9;2
+;Alpes-Maritimes;4443;94%;93%;9;2
+;Var;4507;94%;93%;9;2
+;Vaucluse;4566;94%;93%;9;2
+COMGEND;Guadeloupe;12609;96%;93%;9;2
+;Martinique;12619;96%;93%;9;2
+;"Guyane Française";12599;96%;93%;9;2
+;"La Réunion";6837;96%;93%;9;2
+;"Saint Pierre et Miquelon";7023;96%;93%;9;2
+;Mayotte;15702;96%;93%;9;2
+;"Wallis et Futuna";17419;96%;93%;9;2
+;"Polynésie Française";6989;96%;93%;9;2
+;"Nouvelle Calédonieeeee";6901;96%;93%;9;2
