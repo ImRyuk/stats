@@ -216,7 +216,7 @@ class CSVController extends AbstractController
                 return $this->redirectToRoute('view_csv');
             }
         }
-        return $this->render('csv/form.html.twig', [
+        return $this->render('csv/import.html.twig', [
             'form' => $form->createView(),
         ]);
     }
@@ -244,21 +244,9 @@ class CSVController extends AbstractController
      */
     public function export_CSV(Request $request)
     {
-        $form = $this->createFormBuilder()
-            ->add('Name', TextType::class, [
-                'attr' => ['class' => 'form-control'],
-                'label' => 'Nom du fichier à importer',
-            ])
-            ->add('Envoyer', SubmitType::class, [
-                'attr' => ['class' => 'save form-control']])
-            ->getForm();
-        $form->handleRequest($request);
-
-        if($form->isSubmitted() && $form->isValid())
-        {
             //Creating the file
-            $file = $form->get('Name')->getData() . '.csv';
-            $filename = $this->getParameter('CSV_directory') . $form->get('Name')->getData() . '.csv';
+            $file = 'Stats-gendarmeries-' . date("d-m-Y") . '.csv';
+            $filename = $this->getParameter('CSV_directory') . $file;
             $newFile = new SplFileObject($filename, 'w');
 
             //Creating the CSV's header with predefined titles and adding the stats titles to it
@@ -315,10 +303,5 @@ class CSVController extends AbstractController
             );
 
             return $response;
-        }
-
-        return $this->render('csv/export_csv.html.twig', [
-            'form' => $form->createView()
-        ]);
     }
 }

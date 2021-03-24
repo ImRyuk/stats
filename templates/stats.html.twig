@@ -2,7 +2,7 @@
 
 
 {% block body %}
-
+<div class="container">
         <div class="row griGkV">
             <div class="col-md-3 col-xs-3 dGaTvG">
                 <img class="jSCFEZ" alt="Logo Charte marianne" src="https://www.gendarmerie.interieur.gouv.fr/storage/var/ezwebin_site/storage/images/4/3/7/8/78734-15-fre-FR/logo-sp-plus.png">
@@ -14,7 +14,7 @@
                 <img class="hiacgz" src="{{ ecussonPath }}" alt="ecusson du groupement"/>
             </div>
         </div>
-        <div class="row">
+        <div class="py-2 row">
             <h2 class="col-md-6 fymAmm">{{ departement.name }}</h2>
             <form style="margin-top: 24px" class="col-md-6" action="{{path('index')}}">
                 <select class="form-select" name="stat" id="stat" onchange='this.form.submit()'>
@@ -32,6 +32,9 @@
                 </select>
             </form>
         </div>
+        <div class=" py-2 text-center">
+            <a class="btn btn-primary" href="{{ path('generate_PDF', {id: departement.id}) }}" role="button">Export to PDF</a>
+        </div>
         <div class="row">
             <div class="col-md-8 col-md-offset-2 col-xs-12">
                 <div class="row">
@@ -47,9 +50,6 @@
                         </div>
                     </div>
                 {% endfor %}
-                    <div class="text-center">
-                        <a class="btn btn-primary" href="{{ path('generate_PDF', {id: departement.id}) }}" role="button">Export to PDF</a>
-                    </div>
                 </div>
             </div>
         </div>
@@ -63,6 +63,7 @@
                 <img style="height: 250px; width: 250px" src="{{ qr_code_data_uri(app.request.uri, { writer: 'svg', size: 150, foreground_color: { r: 169, g: 182, b: 216 }, background_color: { r: 255, g: 255, b: 255 }}) }}" alt="QR code de la page" />
             </div>
         </div>
+</div>
 {% endblock %}
 
 

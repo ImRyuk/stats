@@ -39,7 +39,7 @@ class PDFController extends AbstractController
 
 
         // Retrieve the HTML generated in our twig file
-        $html = $this->renderView('pdf/generator.html.twig', [
+        $html = $this->renderView('pdf/export.html.twig', [
             'ecussonPath' => $ecussonPath,
             'departement' => $departement,
             'logoMarianne' => $logoMarianne
