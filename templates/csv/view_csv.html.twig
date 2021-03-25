@@ -2,25 +2,60 @@
 
 {% block body %}
 
-    <table class="table table-striped">
+    <h2 class="text-center">Nom des stats</h2>
+    <table id="type-table" class="table table-striped">
         <thead>
         <tr>
             <th scope="col">Libellé</th>
             <th scope="col">Suffixe</th>
+            <th scope="col">Texte</th>
+            <th scope="col">Source</th>
             <th scope="col">Modifier</th>
         </tr>
         </thead>
-        <tbody>
+        <tbody id="tb-type-body">
         {% for type in types %}
         <tr>
             <th scope="row">{{ type.libelle }}</th>
             {% if not type.suffixe %}
-                <td><input Type="text" id="{{ type.libelle }}" disabled placeholder="Non assigné"></td>
+                <td><input Type="text" class="disable-{{ type.id }}" disabled placeholder="Aucun" style="width: 60px"></td>
             {% else %}
-                <td><input Type="text" id="{{ type.libelle }}" disabled placeholder="{{ type.suffixe }}"></td>
+                <td><input Type="text" class="disable-{{ type.id }}" disabled placeholder="{{ type.suffixe }}" style="width: 60px"></td>
             {% endif %}
-            <td><input Type="checkbox" onclick="disableThis('{{ type.libelle }}', this)"></td>
+            <td><textarea class="form-control disable-{{ type.id }}" disabled>dsbhdbqshdbsqhdhq hds hqbdbqd qb jdb qhqds "</textarea></td>
+            <td><select disabled class="form-select disable-{{ type.id }}" >
+                    <optgroup label="Actuel">
+                        <option>{{ type.source.type }}</option>
+                    </optgroup>
+                    <optgroup label="Disponibles">
+                        <option>1</option>
+                        <option>2</option>
+                    </optgroup>
+                </select></td>
+            <td><button type="button" class="btn btn-outline-info" onclick="disableThis('disable-{{ type.id }}', this)">Edit</button></td>
         </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <button class="btn btn-outline-success add_another" style="width: 200px">Ajouter</button>
+    <div id="send" class="text-center" style="visibility: hidden">
+        <button id="send-button" type="button" class="btn btn-outline-success" style="width: 200px">Envoyer</button>
+    </div>
+
+    <h2 class="text-center">Sources</h2>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th class="text-center" scope="col">Numéro</th>
+            <th scope="col">Texte</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for source in sources %}
+            <tr>
+                <th class="text-center" scope="row">{{ source.type }}</th>
+                <td><textarea class="form-control disable-{{ source.id }}" disabled>{{ source.text }}</textarea></td>
+            </tr>
         {% endfor %}
         </tbody>
     </table>
@@ -29,17 +64,53 @@
 
 {% block javascripts %}
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+
+
+    <script   src="https://code.jquery.com/jquery-1.12.1.js"   integrity="sha256-VuhDpmsr9xiKwvTIHfYWCIQ84US9WqZsLfR4P7qF6O8="   crossorigin="anonymous"></script>
+
     <script>
-        function disableThis(name, item) {
-            const value = document.getElementById(name);
-            // If the checkbox is checked, display the output text
-            if (item.checked === true){
-                value.disabled = false;
-            } else {
-                value.disabled = true;
+
+        $('document').ready(function() {
+            $('.add_another').click(function() {
+                $("#tb-type-body").append('<tr>' +
+                    '<th scope="row"><input type="text" class="txtbox" value="" /></th>' +
+                    '<td><input Type="text" style="width: 60px"></td>' +
+                    '<td><textarea class="form-control"></textarea></td>' +
+                    '<td><select class="form-select" >\n' +
+                    '                    <optgroup label="Disponibles">\n' +
+                    '                        <option>1</option>\n' +
+                    '                        <option>2</option>\n' +
+                    '                    </optgroup>\n' +
+                    '                </select></td>' +
+                    '<td><input type="text" class="txtbox" value="" /></td></tr>');
+            });
+        })
+
+        let disable = true;
+
+        function disableThis(className, item) {
+
+            let inputs = document.getElementsByClassName(className);
+            let div = document.getElementById('send');
+            const button = document.getElementById("send-button");
+            button.addEventListener('click', () => {
+                console.log('name');
+            });
+
+            item.innerHTML = "Sauvegarder";
+
+            if (inputs[0].disabled === true){
+                for (let i = 0; i < inputs.length; i ++) {
+                    inputs[i].disabled = false;
+                }
+                div.style.visibility = "visible";
+            }else {
+                for (let i = 0; i < inputs.length; i ++) {
+                    inputs[i].disabled = true;
+                }
             }
         }
-
     </script>
 
 {% endblock %}

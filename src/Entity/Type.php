@@ -35,6 +35,11 @@ class Type implements \JsonSerializable
      */
     private $stats;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Source::class, inversedBy="types")
+     */
+    private $source;
+
     public function __construct()
     {
         $this->stats = new ArrayCollection();
@@ -111,5 +116,17 @@ class Type implements \JsonSerializable
         return [
             "libelle" => $this->getLibelle()
         ];
+    }
+
+    public function getSource(): ?Source
+    {
+        return $this->source;
+    }
+
+    public function setSource(?Source $source): self
+    {
+        $this->source = $source;
+
+        return $this;
     }
 }

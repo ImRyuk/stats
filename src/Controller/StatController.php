@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\Departement;
+use App\Entity\Source;
 use App\Repository\DepartementRepository;
+use App\Repository\SourceRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -21,6 +23,7 @@ class StatController extends AbstractController
     {
         $id = $request->query->get('stat');
         $departements = $this->getDoctrine()->getRepository(Departement::class)->findAll();
+        $sources = $this->getDoctrine()->getRepository(Source::class)->findAll();
 
         if($request->query->get('stat') != null)
         {
@@ -39,7 +42,8 @@ class StatController extends AbstractController
         return $this->render('stats.html.twig', [
             'departements' => $departements,
             'departement' => $departement,
-            'ecussonPath' => $ecussonPath
+            'ecussonPath' => $ecussonPath,
+            'sources' => $sources
         ]);
     }
 

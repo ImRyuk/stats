@@ -58,13 +58,13 @@
             {% endfor %}
         </div>
         <div class="row dcVOKZ" >
-            <div class="col-xs-8 LyzKh" style="padding-top: 25px">Sources:
+            <div class="col-xs-8 LyzKh dcVOKZ" style="padding-top: 25px">Sources:
                 <div>Résultats régionaux issus de la campagne annuelle d'évaluation de la qualité de l'accueil menée par l'Inspection générale de la gendarmerie nationale (IGGN). Chaque année et sur tout le territoire (métropole et outre-mer) des personnels rencontrent ou contactent des usagers afin de recueillir leur avis et leur satisfaction. En 2020, la campagne a concerné un panel de 3704 usagers et/ou victimes s'étant rendus ou ayant contacté une unité de gendarmerie.</div>
                 <div>Résultats nationaux issus des statistiques d'activité de la brigade numérique sur la période du 1er janvier 2020 au 31 décembre 2020. Directement accessible sur le site internet ou via les réseaux sociaux de la gendarmerie, les personnels de la brigade numérique répondent à vos demandes 24h/24h, 7j/7j. N'hésitez pas à les contacter!</div>
                 <div class="jZgZdV">Pour en savoir plus rendez vous sur :<!-- --> <a href="https://resultats-service-public.fr">resultats-service-public.fr</a></div>
             </div>
             <div class="col-xs-4" >
-                <img style="height: 175px;width: 175px;padding-top: 75px" src="{{ qr_code_data_uri(app.request.uri, { foreground_color: { r: 169, g: 182, b: 216 }, background_color: { r: 255, g: 255, b: 255 }}) }}" alt="QR code de la page" />
+                <img style="height: 175px;width: 175px;padding-top: 75px" src="{{ qr_code_data_uri(app.request.uri, { foreground_color: { r: 169, g: 182, b: 216 }}) }}" alt="QR code de la page" />
             </div>
         </div>
     </div>

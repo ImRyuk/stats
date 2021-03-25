@@ -6,6 +6,7 @@ use App\Entity\CSVFile;
 use App\Entity\Departement;
 use App\Entity\OldRegion;
 use App\Entity\Region;
+use App\Entity\Source;
 use App\Entity\StatValue;
 use App\Entity\Type;
 use Doctrine\DBAL\Exception;
@@ -228,12 +229,14 @@ class CSVController extends AbstractController
     public function view_CSV()
     {
         $types = $this->getDoctrine()->getRepository(Type::class)->findAll();
+        $sources = $this->getDoctrine()->getRepository(Source::class)->findAll();
         $regions = $this->getDoctrine()->getRepository(Region::class)->findAll();
         $departements = $this->getDoctrine()->getRepository(Departement::class)->findAll();
         return $this->render('csv/view_csv.html.twig', [
             'regions' => $regions,
             'departements' => $departements,
-            'types' => $types
+            'types' => $types,
+            'sources' => $sources
         ]);
     }
 
