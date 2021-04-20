@@ -4,8 +4,11 @@ namespace App\Controller;
 
 use App\Entity\Departement;
 use App\Entity\Source;
+use App\Entity\Type;
+use App\Form\TypeFormType;
 use App\Repository\DepartementRepository;
 use App\Repository\SourceRepository;
+use App\Repository\TypeRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;

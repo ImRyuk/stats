@@ -1,0 +1,24 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+    {{ form_start(form) }}
+    <div class="row my-3">
+        <h2 class="text-center">Modifier une source</h2>
+        <div class="form-group col-12 my-3">
+            {{ form_label(form.type) }}
+            {{ form_widget(form.type, { 'attr': {'class': 'form-control'} }) }}
+            {{ form_errors(form.type) }}
+        </div>
+        <div class="form-group col-12">
+            {{ form_label(form.text) }}
+            {{ form_widget(form.text, { 'attr': {'class': 'form-control'} }) }}
+            {{ form_errors(form.text) }}
+        </div>
+        <div class="text-center my-4">
+            {{ form_row(form.save) }}
+        </div>
+    </div>
+    {{ form_end(form) }}
+
+{% endblock %}

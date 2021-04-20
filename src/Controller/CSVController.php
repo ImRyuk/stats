@@ -9,6 +9,8 @@ use App\Entity\Region;
 use App\Entity\Source;
 use App\Entity\StatValue;
 use App\Entity\Type;
+use App\Form\SourceType;
+use App\Form\TypeFormType;
 use Doctrine\DBAL\Exception;
 use Doctrine\ORM\EntityManagerInterface;
 use SplFileObject;
@@ -306,5 +308,57 @@ class CSVController extends AbstractController
             );
 
             return $response;
+    }
+
+    /**
+     * @Route("/viewCSV/editType/{id}", name="editType")
+     * @param Request $request
+     * @param int $id
+     * @return Response
+     */
+    public function editType(Request $request, int $id): Response
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+
+        $type = $entityManager->getRepository(Type::class)->find($id);
+        $form = $this->createForm(TypeFormType::class, $type);
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid())
+        {
+            $entityManager->flush();
+            return $this->redirectToRoute('view_csv');
+        }
+
+        return $this->render("csv/edit_type.html.twig", [
+            "form_title" => "Modifier un type",
+            "form" => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/viewCSV/editSource/{id}", name="editSource")
+     * @param Request $request
+     * @param int $id
+     * @return Response
+     */
+    public function editSource(Request $request, int $id): Response
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+
+        $type = $entityManager->getRepository(Source::class)->find($id);
+        $form = $this->createForm(SourceType::class, $type);
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid())
+        {
+            $entityManager->flush();
+            return $this->redirectToRoute('view_csv');
+        }
+
+        return $this->render("csv/edit_source.html.twig", [
+            "form_title" => "Modifier une source",
+            "form" => $form->createView(),
+        ]);
     }
 }

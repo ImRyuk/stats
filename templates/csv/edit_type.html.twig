@@ -1,0 +1,32 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+        {{ form_start(form) }}
+            <div class="row my-3">
+                <h2 class="text-center">Modifier un type</h2>
+                <div class="form-group col-4">
+                    {{ form_label(form.libelle) }}
+                    {{ form_widget(form.libelle, { 'attr': {'class': 'form-control'} }) }}
+                    {{ form_errors(form.libelle) }}
+                </div>
+                <div class="form-group col-4">
+                    {{ form_label(form.suffixe) }}
+                    {{ form_widget(form.suffixe, { 'attr': {'class': 'form-control'} }) }}
+                    {{ form_errors(form.suffixe) }}
+                </div>
+                <div class="form-group col-4">
+                    {{ form_label(form.source) }}
+                    {{ form_widget(form.source, { 'attr': {'class': 'form-control'} }) }}
+                </div>
+                <div class="form-group col-md-12 my-3">
+                    {{ form_label(form.text) }}
+                    {{ form_widget(form.text, { 'attr': {'class': 'form-control'} }) }}
+                </div>
+                <div class="text-center">
+                    {{ form_row(form.save) }}
+                </div>
+            </div>
+        {{ form_end(form) }}
+
+{% endblock %}

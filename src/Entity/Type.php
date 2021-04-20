@@ -6,6 +6,7 @@ use App\Repository\TypeRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=TypeRepository::class)
@@ -26,9 +27,18 @@ class Type implements \JsonSerializable
     private $libelle;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=5, nullable=true)
+     * @Assert\Length(
+     *      max = 5,
+     *      maxMessage = "Le suffixe ne peut pas dépasser {{ limit }} caractères"
+     * )
      */
     private $suffixe;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $text;
 
     /**
      * @ORM\OneToMany(targetEntity=StatValue::class, mappedBy="type")
@@ -67,7 +77,7 @@ class Type implements \JsonSerializable
         return $this->suffixe;
     }
 
-    public function setSuffixe(string $suffixe): self
+    public function setSuffixe(?string $suffixe): self
     {
         $this->suffixe = $suffixe;
 
@@ -126,6 +136,18 @@ class Type implements \JsonSerializable
     public function setSource(?Source $source): self
     {
         $this->source = $source;
+
+        return $this;
+    }
+
+    public function getText(): ?string
+    {
+        return $this->text;
+    }
+
+    public function setText(string $text): self
+    {
+        $this->text = $text;
 
         return $this;
     }

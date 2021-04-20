@@ -6,6 +6,7 @@ use App\Repository\SourceRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=SourceRepository::class)
@@ -22,6 +23,14 @@ class Source
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\Length(
+     *      max = 2,
+     *      maxMessage = "Le type ne peut pas dépasser {{ limit }} caractères"
+     * )
+     * @Assert\GreaterThan(
+     *     value = 0,
+     *     message="Doit être supérieur à 0"
+     * )
      */
     private $type;
 
@@ -97,5 +106,10 @@ class Source
         }
 
         return $this;
+    }
+
+    public function __toString(): string
+    {
+        return $this->getType();
     }
 }
